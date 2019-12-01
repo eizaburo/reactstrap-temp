@@ -9,7 +9,15 @@ import {
     NavItem,
     NavLink,
     Jumbotron,
+    Form,
+    FormGroup,
+    Label,
+    Input,
+    FormFeedback,
+    Button,
 } from 'reactstrap';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
 class App extends React.Component {
 
@@ -19,6 +27,10 @@ class App extends React.Component {
 
     toggle = () => {
         this.setState({ isOpen: !this.state.isOpen });
+    }
+
+    handleOnSubmit = (values) => {
+        alert(JSON.stringify(values));
     }
 
     render() {
@@ -89,21 +101,74 @@ class App extends React.Component {
                     <section class="py-5">
                         <h2 class="mb-5 text-center">お問合せ</h2>
                         <div class="container">
-                            <form class="col-8 m-auto">
-                                <div class="form-group">
-                                    <label for="email">Email Address</label>
-                                    <input class="form-control" type="email" id="email" name="email" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="title">問合せタイトル</label>
-                                    <input class="form-control" type="text" id="title" name="title" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="note">問合せタイトル</label>
-                                    <textarea class="form-control" id="note" name="note" rows="3"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">問合せる</button>
-                            </form>
+                            <Formik
+                                initialValues={{ email: '', title: '', note: '' }}
+                                onSubmit={this.handleOnSubmit}
+                                validationSchema={Yup.object().shape({
+                                    email: Yup.string().email().required(),
+                                    title: Yup.string().required(),
+                                    note: Yup.string().required(),
+                                })}
+                            >
+                                {
+                                    ({ handleSubmit, handleChange, handleBlur, values, errors, touched }) => (
+                                        <Form className="col-8 m-auto" onSubmit={handleSubmit}>
+
+                                            <FormGroup>
+                                                <Label for="email">Email</Label>
+                                                <Input
+                                                    type="email"
+                                                    name="email"
+                                                    id="email"
+                                                    value={values.email}
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    invalid={touched.email && errors.email}
+                                                />
+                                                <FormFeedback>
+                                                    {errors.email}
+                                                </FormFeedback>
+                                            </FormGroup>
+
+                                            <FormGroup>
+                                                <Label for="title">問合せタイトル</Label>
+                                                <Input
+                                                    type="text"
+                                                    name="title"
+                                                    id="title"
+                                                    value={values.title}
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    invalid={touched.title && errors.title}
+                                                />
+                                                <FormFeedback>
+                                                    {errors.title}
+                                                </FormFeedback>
+                                            </FormGroup>
+
+                                            <FormGroup>
+                                                <Label for="note">問合せ内容</Label>
+                                                <Input
+                                                    type="textarea"
+                                                    name="note"
+                                                    id="note"
+                                                    value={values.note}
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    invalid={touched.note && errors.note}
+                                                    rows="5"
+                                                />
+                                                <FormFeedback>
+                                                    {errors.note}
+                                                </FormFeedback>
+                                            </FormGroup>
+                                            <div className="my-4">
+                                                <Button type="submit" color="primary">問合せる</Button>
+                                            </div>
+                                        </Form>
+                                    )
+                                }
+                            </Formik>
                         </div>
                     </section>
 
