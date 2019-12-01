@@ -16,7 +16,7 @@ class App extends React.Component {
         return (
             <React.Fragment>
 
-                <Navbar color="light" light expand="sm">
+                <Navbar dark expand="sm" fixed="top" style={{backgroundColor:"rgb(100,100,100,.6)"}}>
                     <NavbarBrand href="/">Logo</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
@@ -29,8 +29,8 @@ class App extends React.Component {
                 </Navbar>
 
                 <Jumbotron style={styles.jumbotron}>
-                    <h1>未来を作る会社です。</h1>
-                    <p>ITの力であなたのビジネスの課題を解決します。</p>
+                    <h1 className="mt-5 ml-5">未来を作る会社です。</h1>
+                    <p className="ml-5">ITの力であなたのビジネスの課題を解決します。</p>
                 </Jumbotron>
 
             </React.Fragment>
@@ -46,5 +46,6 @@ const styles = {
         backgroundSize: "cover",
         color: "#fff",
         borderRadius: 0,
+        height:"360px"
     }
 }
