@@ -37,7 +37,7 @@ class App extends React.Component {
         return (
             <React.Fragment>
 
-                <Navbar dark expand="sm" fixed="top" style={{ backgroundColor: "rgb(100,100,100,.6)" }}>
+                <Navbar dark expand="sm" fixed="top" style={{ backgroundColor: "rgb(100,100,100,.9)" }}>
                     <NavbarBrand href="/">Logo</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
