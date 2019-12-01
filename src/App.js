@@ -2,16 +2,6 @@ import React from 'react';
 import './App.css';
 import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, NavLink, Jumbotron } from 'reactstrap';
 
-const styles = {
-    jumbotron: {
-        background: "url('http://www.eizaburo.com/img/top-img-3.jpg') center center",
-        backgroundSize: "cover",
-        color: "#fff",
-        borderRadius: 0,
-    }
-}
-
-
 class App extends React.Component {
 
     state = {
@@ -49,3 +39,12 @@ class App extends React.Component {
 }
 
 export default App;
+
+const styles = {
+    jumbotron: {
+        background: "url('http://www.eizaburo.com/img/top-img-3.jpg') center center",
+        backgroundSize: "cover",
+        color: "#fff",
+        borderRadius: 0,
+    }
+}
