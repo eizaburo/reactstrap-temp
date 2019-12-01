@@ -102,12 +102,14 @@ class App extends React.Component {
                         <h2 class="mb-5 text-center">お問合せ</h2>
                         <div class="container">
                             <Formik
-                                initialValues={{ email: '', title: '', note: '' }}
+                                initialValues={{ email: '', title: '', note: '', gender: '', agree: false }}
                                 onSubmit={this.handleOnSubmit}
                                 validationSchema={Yup.object().shape({
                                     email: Yup.string().email().required(),
                                     title: Yup.string().required(),
                                     note: Yup.string().required(),
+                                    gender: Yup.string().oneOf(['male', 'female']).required(),
+                                    agree: Yup.boolean().oneOf([true]),
                                 })}
                             >
                                 {
@@ -162,6 +164,55 @@ class App extends React.Component {
                                                     {errors.note}
                                                 </FormFeedback>
                                             </FormGroup>
+
+                                            <FormGroup>
+                                                <legend className="col-form-label">性別</legend>
+                                                <FormGroup inline check>
+                                                    <Label check>
+                                                        男：<Input
+                                                            type="radio"
+                                                            name="gender"
+                                                            id="gender"
+                                                            value="male"
+                                                            onChange={handleChange}
+                                                            invalid={errors.gender}
+                                                        />
+                                                    </Label>
+                                                </FormGroup>
+                                                <FormGroup inline check>
+                                                    <Label check>
+                                                        女：<Input
+                                                            type="radio"
+                                                            name="gender"
+                                                            id="gender"
+                                                            value="female"
+                                                            onChange={handleChange}
+                                                            invalid={errors.gender}
+                                                        />
+                                                    </Label>
+                                                </FormGroup>
+                                                <span className="ml-3 text-danger" style={{ fontSize: '0.8rem' }}>
+                                                    {touched.gender && errors.gender ? <span>{errors.gender}</span> : null}
+                                                </span>
+                                            </FormGroup>
+
+                                            <FormGroup check className="my-5">
+                                                <Input
+                                                    type="checkbox"
+                                                    name="agree"
+                                                    id="agree"
+                                                    value={!values.agree}
+                                                    onChange={handleChange}
+                                                />
+                                                <Label for="agree" check>
+                                                    同意する
+                                                </Label>
+                                                <span className="ml-3 text-danger" style={{ fontSize: '0.8rem' }}>
+                                                    {touched.agree && errors.agree ? <span>{errors.agree}</span> : null}
+                                                </span>
+                                            </FormGroup>
+
+
                                             <div className="my-4">
                                                 <Button type="submit" color="primary">問合せる</Button>
                                             </div>
