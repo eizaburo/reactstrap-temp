@@ -1,6 +1,15 @@
 import React from 'react';
 import './App.css';
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, NavLink, Jumbotron } from 'reactstrap';
+import {
+    Nav,
+    Navbar,
+    NavbarBrand,
+    NavbarToggler,
+    Collapse,
+    NavItem,
+    NavLink,
+    Jumbotron,
+} from 'reactstrap';
 
 class App extends React.Component {
 
@@ -16,7 +25,7 @@ class App extends React.Component {
         return (
             <React.Fragment>
 
-                <Navbar dark expand="sm" fixed="top" style={{backgroundColor:"rgb(100,100,100,.6)"}}>
+                <Navbar dark expand="sm" fixed="top" style={{ backgroundColor: "rgb(100,100,100,.6)" }}>
                     <NavbarBrand href="/">Logo</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
@@ -33,6 +42,77 @@ class App extends React.Component {
                     <p className="ml-5">ITの力であなたのビジネスの課題を解決します。</p>
                 </Jumbotron>
 
+                <main>
+                    <section class="py-5">
+                        <h2 class="mb-5 text-center">サービス</h2>
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="text-center mb-5 col-sm-6">
+                                    <img src="http://www.eizaburo.com/img/service-2.jpg" width="400" />
+                                    <h3 class="my-3">Development</h3>
+                                    <p>どんなソフトウエアでも、あらゆる言語を使って開発します。</p>
+                                </div>
+
+                                <div class="text-center col-sm-6">
+                                    <img src="http://www.eizaburo.com/img/service-1.jpg" width="400" />
+                                    <h3 class="my-3">Operation</h3>
+                                    <p>どんなシステムでも、あらゆる手段を使って運用します。</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="py-5 bg-light">
+                        <h2 class="mb-5 text-center">会社概要</h2>
+                        <div class="container">
+                            <table class="table table-borderless col-8 m-auto">
+                                <tbody>
+                                    <tr class="row">
+                                        <th class="col-4 text-left">会社名</th>
+                                        <td class="col-8 text-left">○○○○○○株式会社</td>
+                                    </tr>
+                                    <tr class="row">
+                                        <th class="col-4 text-left">住所</th>
+                                        <td class="col-8 text-left">東京都千代田区丸の内1-1-1</td>
+                                    </tr>
+                                    <tr class="row">
+                                        <th class="col-4 text-left">代表者</th>
+                                        <td class="col-8 text-left">山田 太郎</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="py-5">
+                        <h2 class="mb-5 text-center">お問合せ</h2>
+                        <div class="container">
+                            <form class="col-8 m-auto">
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input class="form-control" type="email" id="email" name="email" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="title">問合せタイトル</label>
+                                    <input class="form-control" type="text" id="title" name="title" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="note">問合せタイトル</label>
+                                    <textarea class="form-control" id="note" name="note" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">問合せる</button>
+                            </form>
+                        </div>
+                    </section>
+
+                </main>
+
+                <footer class="py-5 bg-dark text-center text-light">
+                    &copy; ○○○○○株式会社
+                </footer>
+
             </React.Fragment>
         );
     }
@@ -46,6 +126,6 @@ const styles = {
         backgroundSize: "cover",
         color: "#fff",
         borderRadius: 0,
-        height:"360px"
+        height: "360px"
     }
 }
